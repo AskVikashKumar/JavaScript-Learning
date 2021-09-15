@@ -1,0 +1,124 @@
+About Javascript
+When JavaScript was created, it initially had another name i.e. LiveScript. 
+But Java was very popular at that time, so it was decided that positioning a new language as a 'younger brother' of Java would help.
+As it evolved, JavaScript became a fully independent language with its own specification called ECMAScript, and now it has no relation to Java at all.
+Modern tools make the transpilation very fast and transparent, actually allowing developers to code in another language and auto-converting it.
+Examples of such languages:
+CoffeeScript is a syntactic sugar for JavaScript. It introduces shorter syntax, allowing us to write clearer and more precise code. Usually, Ruby devs like it.
+TypeScript is concentrated on adding strict data typing to simplify the development and support of complex systems Developed by Microsoft.
+Flow also adds data typing, but in a different way Developed by Facebook.
+Dart is a standalone language that has its own engine that runs in  mobile apps, but also can be transpiled to JavaScript Developed by Google.
+Brython is a Python transpiler to JavaScript that enables the writing of applications in pure Python without JavaScript.
+Kotlin is a modern, concise and safe programming language that can target the browser or Node.
+Selected any IDE of the following: Visual Studio Code ,Atom,Sublime,Notepad++ These editors in the lists  are those that I or  whom I ask  have been using for a long time and are happy with it.
+In chrome open this
+Open the page bug.html.
+There’s an error in the JavaScript code on it. It’s hidden from a regular visitor’s eyes, so let’s open developer tools to see it.
+Press F12 or, if you’re on Mac, then Cmd+Opt+J.The developer tools will open on the Console tab by default.
+There is a blue > symbol. It marks a cmd line where we can type JavaScript commands. Press Enter to run them.
+For Multi-line input
+Usually, when we put a line of code into the console, and then press Enter, it executes.
+To insert multiple lines, press Shift+Enter. This way one can enter long fragments of JavaScript code.
+
+Let Start with children familiar Hello World Program.
+Browser proper indentation is required 
+<!DOCTYPE HTML>
+<html>
+  <body>
+    <p>Before the script</p>
+      <script>
+        alert( 'Hello, world!' );
+      </script>
+    <p>After the script.</p>
+  </body>
+</html>
+or like this <script type="text/javascript"> alert( 'Hello, world!' );</script> External file as <script src="/path/to/script.js"></script>
+
+For a long time, JavaScript evolved without compatibility issues. New features were added to the language while old functionality didn’t change.
+That had the benefit of never breaking existing code. But the downside was that any mistake or an imperfect decision made by JavaScript’s creators got stuck in the language forever.
+This was the case until 2009 when ECMAScript 5 (ES5) appeared. It added new features to the language and modified some of the existing ones. To keep the old code working, most such modifications are off by default. 
+You need to explicitly enable them with a special directive: "use strict".
+Right Way
+"use strict";
+alert(" Hello World!");
+// this code works the modern way
+Wrong Way
+alert("Hello World!");
+// "use strict" below is ignored--it should always be at the top
+"use strict";
+// strict mode will not activated
+
+When you use a developer console to run code, please note that it doesn’t use strict by default.
+Sometimes, when use strict makes a difference, you’ll get incorrect results.
+First, you can try to press Shift+Enter to input multiple lines, and put use strict on top
+'use strict'; <Shift+Enter for a newline>
+//  ...some code
+<Enter to run>
+
+Consider Browser as demo environment before proceding to Ide, let’s see a couple of functions to interact with the user: alert, prompt and confirm
+Alert
+The mini-window with the message is called a modal window (word “modal” means that the visitor can’t interact with the rest of the page, press other buttons, etc, until they have dealt with the window) .
+In this case – until they press OK.
+sample code alert("Heloo");
+Prompt
+It shows a modal window with a text message, an input field for the visitor, and the buttons OK/Cancel.
+Synatx : result = prompt(title, [default]);
+title The text to show the visitor.
+default An optional second parameter, the initial value for the input field
+We can type something in the prompt input field and press OK. T
+Then you get that text in the result. Or you can cancel the input by pressing Cancel or hitting the Esc key, then you get null as the result.
+The call to prompt returns the text from the input field or null if the input was canceled
+Eg try it yourself dont worry about word  let will be  explain 
+let age = prompt('How old are you?', 50);
+alert(`You are ${age} years old!`); // You are 100 years old!
+eg2
+let name = prompt("What is your name?", "");
+Confirm
+The function confirm shows a modal window with a question and two buttons: OK and Cancel.
+The result is true if OK is pressed and false otherwise.
+Synatx : result = confirm(question);
+Eg
+let isBoss = confirm("Are you the boss?");
+alert( isBoss ); // true if OK is pressed
+
+Ceratin limitations shared by all the methods above:
+1.The exact location of the modal window is determined by the browser. Usually, it’s in the center.
+2.The exact look of the window also depends on the browser. We can’t modify it.
+Data Type
+8 basic data types in JavaScript.
+    1.number for numbers of any kind: integer or floating-point, integers are limited by ±(253-1). let n = 123;
+    2.bigint is for integer numbers of arbitrary length. const bigInt = 1234567890123456789012345678901234567890n;
+    3.string for strings. A string may have zero or more characters, there’s no separate single-character type.
+    Eg let str = "Hello";let str2 = 'Single quotes are ok too';let phrase = `can embed another ${str}`;
+    there are 3 types of quotes.Double quotes: "Hello".Single quotes: 'Hello'.Backticks: `Hello`.
+    Back ticks eg alert( `the result is ${1 + 2}` ); // the result is 3
+    4.boolean for true/false. let isGreater = 4 > 1; alert( isGreater ); // true (the comparison result is "yes")
+    5.null for unknown values – a standalone type that has a single value null. let age = null; // The code above states that age is unknown
+    6.undefined for unassigned values – a standalone type that has a single value undefined. let age; alert(age); // shows "undefined"
+    7.object for more complex data structures.
+    8.symbol for unique identifiers.
+    The typeof operator allows us to see which type is stored in a variable.
+    Two forms: typeof x or typeof(x).
+    Returns a string with the name of the type, like "string".
+    For null returns "object" – this is an error in the language, it’s not actually an object.
+    eg
+    typeof undefined // "undefined"
+    typeof 0 // "number"
+    typeof 10n // "bigint"
+    typeof true // "boolean"
+    typeof "foo" // "string"
+    
+The number type represents both integer and floating point numbers.
+There are many operations for numbers, e.g. multiplication *, division /, addition +, subtraction -, and so on.
+Besides regular numbers, there are so-called “special numeric values” which also belong to this data type: Infinity, -Infinity and NaN.
+Infinity represents the mathematical Infinity ∞. It is a special value that’s greater than any number.
+Doing maths is “safe” in JavaScript. We can do anything: divide by zero, treat non-numeric strings as numbers, etc.
+The script will never stop with a fatal error or (“die”). At worst, we’ll get NaN as the result.
+Eg alert( "not a number" / 2 ); // NaN, such division is erroneous 
+alert( 1 / 0 ); // Infinity
+
+Try it yourself
+let name = "John";
+alert( `hello ${1}` ); 
+alert( `hello ${"name"}` ); 
+alert( `hello ${name}` ); 
